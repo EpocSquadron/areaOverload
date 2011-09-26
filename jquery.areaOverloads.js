@@ -113,7 +113,7 @@
         if ($(this).is(newelSelector)) {
             return methods.areaDimensions($(this).attr('shape'), $(this).attr('coords')).width;
         } else {
-            return orig.outerWidth.apply(this, bool);
+            return (typeof bool === 'undefined') ? orig.outerWidth.apply(this) : orig.outerWidth.apply(this, bool);
         }
     }
 
@@ -121,7 +121,7 @@
         if ($(this).is(newelSelector)) {
             return methods.areaDimensions($(this).attr('shape'), $(this).attr('coords')).height;
         } else {
-            return orig.outerHeight.apply(this, bool);
+            return (typeof bool === 'undefined') ? orig.outerHeight.apply(this) : orig.outerHeight.apply(this, bool);
         }
     }
 
@@ -130,7 +130,7 @@
             refimg = $(document).find('img[usemap="#' + $(this).parent().attr('id') + '"]');
             return methods.areaPosition($(this).attr('shape'), $(this).attr('coords'), refimg);
         } else {
-            return orig.offset.apply(this, coordsorcallback);
+            return (typeof coordsorcallback === 'undefined') ? orig.offset.apply(this) : orig.offset.apply(this, coordsorcallback);
         }
     }
 
